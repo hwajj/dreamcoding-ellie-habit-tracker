@@ -4,7 +4,8 @@ class Habit extends Component {
   state = {
     count: 0,
   };
-  handleIncreament = () => {
+  handleIncreament = (event) => {
+    console.log(event);
     console.log('hihih~~~');
     //setState 호출해줘야 리액트가 부분적으로 업데이트 할 수 있다ㄴ
     console.log(this.state.count);
@@ -17,10 +18,13 @@ class Habit extends Component {
     this.setState({ count: count < 0 ? 0 : count });
   };
   render() {
+    // const habitName = this.props.habit.name;
+
+    const { name, count } = this.props.habit;
     return (
       <li className='habit'>
-        <span className='habit-name'>reading</span>
-        <span className='habit-count'>{this.state.count}</span>
+        <span className='habit-name'>{name}</span>
+        <span className='habit-count'>{count}</span>
         <button
           className='habit-button habit-increase'
           onClick={this.handleIncreament}

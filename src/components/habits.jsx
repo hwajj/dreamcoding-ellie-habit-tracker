@@ -1,6 +1,6 @@
 /* eslint-disable no-unreachable */
 import React, { Component } from 'react';
-
+import Habit from './habit';
 class Habits extends Component {
   state = {
     habits: [
@@ -11,7 +11,13 @@ class Habits extends Component {
   };
 
   render() {
-    return <ul></ul>;
+    return (
+      <ul>
+        {this.state.habits.map((habit) => (
+          <Habit habit={habit}></Habit>
+        ))}
+      </ul>
+    );
   }
 }
 
