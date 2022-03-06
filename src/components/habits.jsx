@@ -2,11 +2,12 @@
 import React, { Component } from 'react';
 import Habit from './habit';
 class Habits extends Component {
+  //container
   state = {
     habits: [
-      { name: 'Reading', count: 0 },
-      { name: 'Running', count: 0 },
-      { name: 'coding', count: 0 },
+      { id: 1, name: 'Reading', count: 0 },
+      { id: 2, name: 'Running', count: 0 },
+      { id: 3, name: 'coding', count: 0 },
     ],
   };
 
@@ -14,7 +15,7 @@ class Habits extends Component {
     return (
       <ul>
         {this.state.habits.map((habit) => (
-          <Habit habit={habit}></Habit>
+          <Habit key={habit.id} habit={habit}></Habit>
         ))}
       </ul>
     );
