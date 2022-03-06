@@ -1,21 +1,14 @@
 import React, { Component } from 'react';
 
 class Habit extends Component {
-  state = {
-    count: 0,
+  handleIncreament = (habit) => {
+    this.props.onIncrement(this.props.habit);
   };
-  handleIncreament = (event) => {
-    console.log(event);
-    console.log('hihih~~~');
-    //setState 호출해줘야 리액트가 부분적으로 업데이트 할 수 있다ㄴ
-    console.log(this.state.count);
-    this.setState({ count: this.state.count + 1 });
+  handleDecreament = (habit) => {
+    this.props.onDecrement(this.props.habit);
   };
-  handleDecreament = () => {
-    console.log('hihihi');
-    const count = this.state.count - 1;
-    console.log(this.state.count);
-    this.setState({ count: count < 0 ? 0 : count });
+  handleDelete = (habit) => {
+    this.props.onDelete(this.props.habit);
   };
   render() {
     // const habitName = this.props.habit.name;
@@ -37,7 +30,10 @@ class Habit extends Component {
         >
           <i className='fa-solid fa-square-minus'></i>
         </button>
-        <button className='habit-button habit-delete'>
+        <button
+          className='habit-button habit-delete'
+          onClick={this.handleDelete}
+        >
           <i className='fas fa-trash'></i>
         </button>
       </li>
