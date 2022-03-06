@@ -1,7 +1,7 @@
+import React, { Component } from 'react';
 import './app.css';
 import Habits from './components/habits';
-
-import React, { Component } from 'react';
+import Navbar from './components/navbar';
 
 class App extends Component {
   state = {
@@ -11,9 +11,7 @@ class App extends Component {
       { id: 3, name: 'coding', count: 0 },
     ],
   };
-
   handleIncreament = (habit) => {
-    console.log(habit);
     const habits = [...this.state.habits];
     const index = habits.indexOf(habit);
     habits[index].count++;
@@ -28,17 +26,24 @@ class App extends Component {
     this.setState({ habits });
   };
   handleDelete = (habit) => {
-    const habits = this.state.habits.filter((item) => item.id !== habit.id);
+    const habits = this.state.habits.filter((item) => item.id != habit.id);
+    const index = habits.indexOf(habit);
+
     this.setState({ habits });
   };
   render() {
     return (
-      <Habits
-        habits={this.state.habits}
-        onIncrement={this.handleIncreament}
-        onDecrement={this.handleDecreament}
-        onDelete={this.handleDelete}
-      />
+      <>
+        <Navbar
+          totalCount={this.state.habits.filter((item) => item.count > 0).length}
+        />
+        <Habits
+          habits={this.state.habits}
+          onIncrement={this.handleIncreament}
+          onDecrement={this.handleDecreament}
+          onDelete={this.handleDelete}
+        />
+      </>
     );
   }
 }
