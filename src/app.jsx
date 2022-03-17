@@ -22,13 +22,24 @@ class App extends Component {
     const habits = [...this.state.habits];
     const index = habits.indexOf(habit);
     const count = habits[index].count - 1;
-    habits[index].count = count < 0 ? 0 : count;
+    habits[index].count = count < 0 ? 0 : count; //객체 직접수정(bad)~ 나중에 고쳐야함
     this.setState({ habits });
   };
   handleDelete = (habit) => {
     const habits = this.state.habits.filter((item) => item.id != habit.id);
-    const index = habits.indexOf(habit);
+    // const index = habits.indexOf(habit);
+    this.setState({ habits });
+  };
+  handleAdd = (name) => {
+    const habits = [...this.state.habits, { id: Date.now(), name, count: 0 }];
+    this.setState({ habits });
+  };
 
+  handleReset = () => {
+    const habits = this.state.habits.map((habit) => {
+      habit.count = 0;
+      return habit;
+    });
     this.setState({ habits });
   };
   render() {
@@ -42,6 +53,8 @@ class App extends Component {
           onIncrement={this.handleIncreament}
           onDecrement={this.handleDecreament}
           onDelete={this.handleDelete}
+          onAdd={this.handleAdd}
+          onReset={this.handleReset}
         />
       </>
     );
