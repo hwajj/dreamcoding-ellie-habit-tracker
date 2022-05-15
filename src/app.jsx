@@ -12,21 +12,43 @@ class App extends Component {
     ],
   };
   handleIncreament = (habit) => {
-    const habits = [...this.state.habits];
-    const index = habits.indexOf(habit);
-    habits[index].count++;
-    //    this.setState({habits:habits});
+    ////같은 객체를 참조함
+    // const habits = [...this.state.habits];
+    // const index = habits.indexOf(habit);
+    // habits[index].count++; //habit의 count만 증가
+    //// console.log(this.state.habits);
+    //// console.log(habits);
+    // this.setState({ habits: habits });
+
+    //아예 새로운 객체 만듦
+    const habits = this.state.habits.map((item) => {
+      if (item.id === habit.id) {
+        return { ...habit, count: habit.count + 1 };
+      }
+      return item;
+    });
+    // console.log(this.state.habits);
+    // console.log(habits);
     this.setState({ habits });
   };
+
   handleDecreament = (habit) => {
-    const habits = [...this.state.habits];
-    const index = habits.indexOf(habit);
-    const count = habits[index].count - 1;
-    habits[index].count = count < 0 ? 0 : count; //객체 직접수정(bad)~ 나중에 고쳐야함
+    // const habits = [...this.state.habits];
+    // const index = habits.indexOf(habit);
+    // const count = habits[index].count - 1;
+    // habits[index].count = count < 0 ? 0 : count; //객체 직접수정(bad)~ 나중에 고쳐야함
+    const habits = this.state.habits.map((item) => {
+      if (item.id === habit.id) {
+        const count = habit.count - 1;
+        return { ...habit, count: count < 0 ? 0 : count };
+      }
+      return item;
+    });
+
     this.setState({ habits });
   };
   handleDelete = (habit) => {
-    const habits = this.state.habits.filter((item) => item.id != habit.id);
+    const habits = this.state.habits.filter((item) => item.id !== habit.id);
     // const index = habits.indexOf(habit);
     this.setState({ habits });
   };
@@ -36,8 +58,14 @@ class App extends Component {
   };
 
   handleReset = () => {
+    // const habits = this.state.habits.map((habit) => {
+    //   habit.count = 0;
+    //   return habit;
+    // });
     const habits = this.state.habits.map((habit) => {
-      habit.count = 0;
+      if (habit.count !== 0) {
+        return { ...habit, count: 0 };
+      }
       return habit;
     });
     this.setState({ habits });
