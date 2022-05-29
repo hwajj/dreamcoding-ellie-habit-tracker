@@ -18,9 +18,9 @@ class App extends Component {
     // habits[index].count++; //habit의 count만 증가
     //// console.log(this.state.habits);
     //// console.log(habits);
-    // this.setState({ habits: habits });
+    // this.setState({ habits: habits }); //기존객체를 업데이트
 
-    //아예 새로운 객체 만듦
+    //아예 새로운 객체 만듦=
     const habits = this.state.habits.map((item) => {
       if (item.id === habit.id) {
         return { ...habit, count: habit.count + 1 };
@@ -29,7 +29,8 @@ class App extends Component {
     });
     // console.log(this.state.habits);
     // console.log(habits);
-    this.setState({ habits });
+    this.setState({ habits }); //새로운객체를 업데이트
+    //pureComponent는 state의 참조값이 변하지 않으면 render안됨~ 새로운 참조값의 객체 생성해서 넘겨줘야함
   };
 
   handleDecreament = (habit) => {

@@ -1,5 +1,6 @@
 import React, { PureComponent } from 'react';
 
+//props 안의 데이터가 변경되지 않으면 렌더함수가 호출되지않음
 class Habit extends PureComponent {
   handleIncreament = (habit) => {
     this.props.onIncrement(this.props.habit);
