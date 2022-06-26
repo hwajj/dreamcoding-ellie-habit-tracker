@@ -92,3 +92,17 @@ button {
   height: 100%;
   border-radius: 10%;
 }
+
+.habits-reset {
+  padding: 0.5rem;
+  font-size: 1.7rem;
+  color: white;
+  background-color: green;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  vertical-align: middle;
+  height: 2.8rem;
+  margin: 0 20px;
+  border-radius: 10%;
+}
