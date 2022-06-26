@@ -5,6 +5,7 @@ import { memo } from 'react/cjs/react.production.min';
 // (PureComponent이거나 memo 사용했을때 , 얕은비교해서 바뀐것 없으므로) 리렌더 되지 않음
 
 const HabitAddForm = memo((props) => {
+  //PureComponent 얕은비교해서 바뀌면 리렌더
   const inputRef = React.createRef();
   const formRef = React.createRef();
 
@@ -29,5 +30,4 @@ const HabitAddForm = memo((props) => {
     </form>
   );
 });
-
 export default HabitAddForm;
