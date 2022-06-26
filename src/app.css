@@ -68,3 +68,27 @@ button {
   color: white;
   border-radius: 50%;
 }
+
+.add-input {
+  font-size: 2rem;
+  margin-right: 0.2rem;
+  height: 2.8rem;
+}
+
+.add-form {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  vertical-align: middle;
+  height: 2.8rem;
+  margin: 20px 0 0 20px;
+}
+
+.add-button {
+  font-size: 1.7rem;
+  width: 4.5rem;
+  color: white;
+  background-color: green;
+  height: 100%;
+  border-radius: 10%;
+}
